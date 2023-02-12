@@ -6,7 +6,8 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 fun main(args: Array<String>) {
-    Main().loadTest()
+    // Main().loadTest()
+    Main().interactiveCalculator()
 }
 
 class Main {
@@ -41,8 +42,8 @@ class Main {
         var line = scanner.nextLine()
 
         while (line.isNotEmpty()) {
-            val tokens = Tokenizer(line).tokenize()
-            val expr = Parser(tokens).parseExpression()
+            val tokens = Tokenizer(line + ";").tokenize()
+            val expr = Parser(tokens).parseExpr()
             println(Evaluator().evalExpr(expr))
             print("> ")
             line = scanner.nextLine()

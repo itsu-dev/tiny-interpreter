@@ -74,7 +74,7 @@ class Parser(private val tokens: List<Token>, start: Int = 0) {
 
                     if (tokens[++pos].type == Token.TYPE_EQUAL_OPERATOR) {
                         pos++
-                        val expr = parseExpression()
+                        val expr = parseExpr()
                         pos++ // pass ;
                         return VarStatement(varName, expr)
 
@@ -94,7 +94,7 @@ class Parser(private val tokens: List<Token>, start: Int = 0) {
                     }
 
                     pos++ // pass (
-                    exprCache = parseExpression(pos)
+                    exprCache = parseExpr(pos)
                     typeCache = Token.TYPE_IDENTIFIER_WHILE
 
                     pos++ // pass )
@@ -110,7 +110,7 @@ class Parser(private val tokens: List<Token>, start: Int = 0) {
                     }
 
                     pos++ // pass (
-                    exprCache = parseExpression(pos)
+                    exprCache = parseExpr(pos)
                     typeCache = Token.TYPE_IDENTIFIER_IF
 
                     pos++ // pass )
@@ -157,7 +157,7 @@ class Parser(private val tokens: List<Token>, start: Int = 0) {
 
                     pos++
 
-                    val expr = parseExpression()
+                    val expr = parseExpr()
                     pos++ // pass ;
                     return LetStatement(varName, expr)
                 }
@@ -198,7 +198,7 @@ class Parser(private val tokens: List<Token>, start: Int = 0) {
     /**
     @see https://nodamushi.hatenablog.com/entry/20090625/1245902959
      */
-    fun parseExpression(dest: Int? = null): Expr {
+    fun parseExpr(dest: Int? = null): Expr {
         // infix notation to reversed-polish notation
         val queue = ConcurrentLinkedQueue<Token>()
         val stack = Stack<Token>()

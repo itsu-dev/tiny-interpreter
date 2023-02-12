@@ -115,6 +115,9 @@ class Evaluator {
         } else if (expr is IntExpr) {
             return expr.value
 
+        } else if (expr is FloatExpr) {
+            return expr.value
+
         } else if (expr is StringExpr) {
             println(expr.value)
             return expr.value
