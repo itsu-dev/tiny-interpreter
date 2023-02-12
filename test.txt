@@ -1,0 +1,14 @@
+var VariableName: <ClassName | TypeName> = Expression
+
+VariableName = Expression
+
+if (Expression) {
+    Statement;
+    Statement;
+}
+
+while (Expression) {
+    Statement;
+    Statement;
+    Statement;
+}
